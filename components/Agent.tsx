@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { vapi } from "@/lib/vapi.sdk";
 import { interviewer } from "@/constants";
+import { createFeedback } from "@/lib/actions/general.action";
 // import { createFeedback } from "@/lib/actions/general.action";
 
 enum CallStatus {
@@ -94,31 +95,30 @@ const Agent = ({
 
   // --- Feedback Generation ---
   useEffect(() => {
+    const handleGenerateFeedback = async () => {
+      setIsGeneratingFeedback(true);
+      const { success, feedbackId: id } = await createFeedback({
+        interviewId,
+        userId,
+        transcript: messages,
+        feedbackId,
+      });
+      setIsGeneratingFeedback(false);
+
+      if (success && id) {
+        router.push(`/interview/${interviewId}/feedback`);
+      } else {
+        router.push("/");
+      }
+    };
+
     if (callStatus === CallStatus.FINISHED) {
       if (type === "generate") {
         router.push("/");
-      // } else if (messages.length > 0) {
-      //   handleGenerateFeedback();
+      } else if (messages.length > 0) {
+        handleGenerateFeedback();
       }
     }
-  //   const handleGenerateFeedback = async () => {
-  //     setIsGeneratingFeedback(true);
-  //     const { success, feedbackId: id } = await createFeedback({
-  //       interviewId,
-  //       userId,
-  //       transcript: messages,
-  //       feedbackId,
-  //     });
-  //     setIsGeneratingFeedback(false);
-
-  //     if (success && id) {
-  //       router.push(`/interview/${interviewId}/feedback`);
-  //     } else {
-  //       router.push("/");
-  //     }
-  //   };
-
-    
   }, [callStatus, messages, feedbackId, interviewId, router, type, userId]);
 
   // 
