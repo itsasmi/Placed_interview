@@ -140,6 +140,7 @@ const Agent = ({
         }
       );
     } else {
+      //Interviewer Logic
       let formattedQuestions = "";
       if (questions) {
         formattedQuestions = questions
@@ -168,10 +169,10 @@ const Agent = ({
         <div className="card-interviewer">
           <div className="avatar">
             <Image
-              src="/ai-avatar.png"
+              src="/robot-assistant2.png"
               alt="AI Interviewer"
-              width={65}
-              height={54}
+              width={85}
+              height={74}
               className="object-cover"
             />
             {isSpeaking && <span className="animate-speak" />}
@@ -183,10 +184,10 @@ const Agent = ({
         <div className="card-border">
           <div className="card-content">
             <Image
-              src="/user-avatar.png"
+              src="/man.png"
               alt="User"
-              width={120}
-              height={120}
+              width={180}
+              height={180}
               className="rounded-full object-cover"
             />
             <h3>{userName}</h3>

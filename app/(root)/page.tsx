@@ -19,15 +19,21 @@ const page = async () => {
     <>
       <section className='card-cta'>
         <div className='flex flex-col gap-6 max-w-lg'>
-          <h2>Get Interview-Ready with AI-Powered Practice & Feedback</h2>
+          <h2>Ace Your Interview with AI Practice, Smart Quizzes & Instant Feedback</h2>
           <p className='text-lg'>
-            Practice on real interview questions & get instant feedback
+            Sharpen your skills with mock interviews and interactive quizzes designed to boost your confidence.
           </p>
-          <Button asChild className='btn-primary max-sm:w-full'>
-            <Link href="/interview">Start an Interview</Link>
-          </Button>
-        </div>
-        <Image src="/robot.png" alt="robo-dude"
+          <div className="flex flex-row gap-4 max-sm:flex-col">
+      <Button asChild className='btn-primary'>
+        <Link href="/interview">Start an Interview</Link>
+      </Button>
+      <Button asChild className='btn-primary'>
+        <Link href="/quiz">View Quizzes</Link>
+      </Button>
+    </div>
+  </div>
+  {/* //src="/robot.png" */}
+        <Image src="/rkrobot.png" alt="robo-dude"
           width={400}
           height={400}
           className='max-sm:hidden'
