@@ -7,7 +7,7 @@ const page = async() => {
 
   return (
     <>
-        <Agent userName={user?.name!} userId={user?.id!} type="generate"/>
+        <Agent userName={user?.name} userId={user?.id} type="generate"/>
     </>
 )
 }
